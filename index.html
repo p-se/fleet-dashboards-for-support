@@ -1,40 +1,206 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet"
+				href="dist/reset.css">
+	<link rel="stylesheet"
+				href="dist/reveal.css">
+	<link rel="stylesheet"
+				href="dist/theme/serif.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet"
+				href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section data-markdown>
+				<textarea data-template>
+						### Fleet Dashboards
+						#### For Support
+						##### Patrick Seidensal \<pseidensal@suse.com>
+					</textarea>
+			</section>
+
+			<section>
+				<h3>Fleet Dashboards</h3>
+				<h4>For Support</h4>
+				<h4>Patrick Seidensal &lt;pseidensal@suse.com&gt;</h4>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+						### Table of Contents
+
+						- Installation
+						- Where to Find the Dasbhoards?
+						- Dashboard Organization
+						- Tour of Dashboards
+						- Troubleshooting
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Installation
+
+					Just install the `rancher-monitoring` chart
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Where to Find the Dashboards?
+
+					- Currently only in Grafana
+						- Grafana is reachable from the Rancher UI. Click on the `local` cluster -> `Monitoring` -> `Grafana`
+					- Plan to embed in Rancher
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+						### Tour of Dashboards
+
+						- GitJob
+						- Bundle
+						- BundleDeployment
+						- Cluster
+						- ClusterGroup
+						- Controller-Runtime
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Troubleshooting
+
+					#### Dashboard X doesn't show data
+
+					![no-data-gitrepo](images/no-data-gitrepo.png)
+
+					---
+
+					### Troubleshooting
+
+					#### Dashboard X doesn't show data
+
+					***
+
+					- Just installed?
+						- Wait for Prometheus to be configured (can take a few minutes!)
+						- Wait for the data to be scraped (takes a few seconds)
+
+					- Metrics will only appear if the corresponding
+					resource is created, e.g. GitJob
+
+					---
+
+					### Troubleshooting
+
+					#### Dashboard X doesn't show data
+
+					***
+
+					- Check the configured time range
+
+					  ![time-range](images/time-range.png)
+
+					---
+
+					### Troubleshooting
+
+					#### Dashboard X doesn't show data
+
+					***
+
+					- Refresh the dashboard
+
+					  ![time-range](images/refresh-interval.png)
+
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Troubleshooting
+					#### I don't see *any* data
+
+					***
+
+					```mermaid
+					flowchart LR
+						G[Grafana] --> P[Prometheus]
+					```
+
+					- Check the data source in Grafana
+					- Check the scrape configuration in Prometheus
+					- Check the ServiceMonitor resource
+					- Check the Fleet service
+					- Check the Fleet controller
+
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Troubleshooting
+					#### Wrong Data
+
+					***
+
+					- Not a dashboard issue if Fleet resources show the same
+					values in their status
+					</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Troubleshooting
+					#### Missing Data
+
+					***
+
+					- Monitoring collects data every X seconds
+					</textarea>
+			</section>
+
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+	<!-- https://github.com/zjffun/reveal.js-mermaid-plugin -->
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@2.3.0/plugin/mermaid/mermaid.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			progress: true,
+			mermaid: {
+				theme: 'base',
+			},
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
+		});
+	</script>
+</body>
+
 </html>
