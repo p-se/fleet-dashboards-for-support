@@ -1,0 +1,30 @@
+
+%%{
+    init: {
+        "theme": "base"
+    }
+}%%
+
+flowchart LR
+    %% GJ[GitJob]
+    GR[GitRepo Resource]
+    C[Cluster Resource]
+    CG[ClusterGroup Resource]
+    B[Bundle Resource]
+    BD[BundleDeployment Resource]
+    RGR[Git Repository]
+
+    GR -->|refers to a single| RGR
+    GR -->|may have one or more paths resulting in one or more| B
+    GR --> B
+    GR --> B
+
+    CG -->|contains one or more| C
+    CG --> C
+    CG --> C
+
+    B -->|results in one BundleDeployment per Cluster| BD
+    B --> BD
+    B --> BD
+
+

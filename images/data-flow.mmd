@@ -1,0 +1,20 @@
+%%{
+    init: {
+        "theme": "base"
+    }
+}%%
+
+flowchart LR
+    G[Grafana]
+    P[Prometheus]
+    FC[Fleet Controller]
+    FCS[Fleet Controller Service]
+    SM[Service Monitor]
+
+    G -->|pulls data| P
+    P -->|scrapes data| FCS
+    FCS -->|points to| FC
+
+    SM -->|configures| P
+
+

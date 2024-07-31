@@ -1,0 +1,19 @@
+%%{
+    init: {
+        "theme": "base"
+    }
+}%%
+
+erDiagram
+    %% GitRepo
+    %% Cluster
+    %% ClusterGroup
+    %% Bundle
+    %% BundleDeployment
+
+    GitRepo ||--o{ Cluster : "uses"
+    GitRepo ||--o{ ClusterGroup : "uses"
+    GitRepo ||--o{ Bundle : "creates"
+    ClusterGroup ||--o{ Cluster : "contains"
+    Bundle ||--o{ BundleDeployment : "results in"
+    BundleDeployment ||--o{ Resource : "creates"

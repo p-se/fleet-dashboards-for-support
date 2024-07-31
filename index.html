@@ -13,7 +13,7 @@
 	<link rel="stylesheet"
 				href="dist/reveal.css">
 	<link rel="stylesheet"
-				href="dist/theme/serif.css">
+				href="dist/theme/simple.css">
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet"
@@ -23,14 +23,6 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-
-			<section data-markdown>
-				<textarea data-template>
-						### Fleet Dashboards
-						#### For Support
-						##### Patrick Seidensal \<pseidensal@suse.com>
-					</textarea>
-			</section>
 
 			<section>
 				<h3>Fleet Dashboards</h3>
@@ -43,7 +35,7 @@
 						### Table of Contents
 
 						- Installation
-						- Where to Find the Dasbhoards?
+						- Where to Find the Dashboards?
 						- Dashboard Organization
 						- Tour of Dashboards
 						- Troubleshooting
@@ -55,6 +47,8 @@
 					### Installation
 
 					Just install the `rancher-monitoring` chart
+
+					![monitoring-chart-ui](images/monitoring-chart-ui.png)
 					</textarea>
 			</section>
 
@@ -62,10 +56,43 @@
 				<textarea data-template>
 					### Where to Find the Dashboards?
 
-					- Currently only in Grafana
-						- Grafana is reachable from the Rancher UI. Click on the `local` cluster -> `Monitoring` -> `Grafana`
-					- Plan to embed in Rancher
+					Currently, only in Grafana
+						<!-- - Grafana is reachable from the Rancher UI. Click on the `local` cluster -> `Monitoring` -> `Grafana` -->
+
+					![where-to-find](images/where-to-find.png)
 					</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					### Where to Find the Dashboards?
+
+					#### Embedding into Rancher UI in progress
+
+					- Fleet proposal
+
+						<https://github.com/rancher/fleet/issues/2634>
+
+					- Resulting Rancher Dashboard issue
+
+						<https://github.com/rancher/dashboard/issues/11571>
+
+					- UI/UX issue
+
+						<https://jira.suse.com/browse/UXUI-231>
+
+				</textarea>
+			</section>
+
+			<section data-markdown>
+				<textarea data-template>
+					### Dashboard Organization
+
+				</textarea>
+			</section>
+
+			<section data-background-image="images/dashboard-org.svg">
+
+
 			</section>
 
 			<section data-markdown>
@@ -74,16 +101,25 @@
 
 						- GitJob
 						- Bundle
-						- BundleDeployment
+						- BundleDeployment*
 						- Cluster
 						- ClusterGroup
-						- Controller-Runtime
+						- Controller-Runtime*
+
+						*Not to be embedded in Rancher UI
 					</textarea>
 			</section>
 
 			<section data-markdown>
 				<textarea data-template>
 					### Troubleshooting
+					#### Data Flow
+
+					<img src="images/data-flow.svg"
+							alt="Prometheus Architecture"
+							style="width: auto; height: 20%;">
+
+					---
 
 					#### Dashboard X doesn't show data
 
