@@ -1,133 +1,202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport"
-				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>reveal.js</title>
 
-	<title>reveal.js</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/simple.css" />
 
-	<link rel="stylesheet"
-				href="dist/reset.css">
-	<link rel="stylesheet"
-				href="dist/reveal.css">
-	<link rel="stylesheet"
-				href="dist/theme/simple.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
 
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet"
-				href="plugin/highlight/monokai.css">
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Fleet Dashboards</h3>
+          <h4>For Support</h4>
+          <h4>Patrick Seidensal &lt;pseidensal@suse.com&gt;</h4>
+        </section>
 
-<body>
-	<div class="reveal">
-		<div class="slides">
+        <section>
+          <h3>Table of Contents</h3>
 
-			<section>
-				<h3>Fleet Dashboards</h3>
-				<h4>For Support</h4>
-				<h4>Patrick Seidensal &lt;pseidensal@suse.com&gt;</h4>
-			</section>
+          <ul>
+            <li>Installation</li>
+            <li>Where to Find the Dashboards?</li>
+            <li>Dashboard Organization</li>
+            <li>Tour of Dashboards</li>
+            <li>Troubleshooting</li>
+            <li>Questions</li>
+          </ul>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-						### Table of Contents
+        <section>
+          <section>
+            <h3>Installation</h3>
+            Just install the <code>rancher-monitoring</code> chart
+            <img src="images/monitoring-chart-ui.png" />
+          </section>
+        </section>
 
-						- Installation
-						- Where to Find the Dashboards?
-						- Dashboard Organization
-						- Tour of Dashboards
-						- Troubleshooting
-					</textarea>
-			</section>
+        <section>
+          <section>
+            <h3>Where to Find the Dashboards?</h3>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Installation
+            Currently, only in Grafana
+            <!-- - Grafana is reachable from the Rancher UI. Click on the `local` cluster -> `Monitoring` -> `Grafana` -->
+            <img src="images/where-to-find.png" />
+          </section>
 
-					Just install the `rancher-monitoring` chart
+          <section>
+            <h3>Where to Find the Dashboards?</h3>
+            <h4>Embedding into Rancher UI <strong>WIP</strong></h4>
 
-					![monitoring-chart-ui](images/monitoring-chart-ui.png)
-					</textarea>
-			</section>
+            <ul>
+              <li>
+                <p>Proposal</p>
+                <p>
+                  <a href="https://github.com/rancher/fleet/issues/2634" target="_blank"
+                    >github.com/rancher/fleet/issues/2634</a
+                  >
+                </p>
+              </li>
+              <li>
+                <p>Resulting Rancher Dashboard issue</p>
+                <p>
+                  <a href="https://github.com/rancher/dashboard/issues/11571" target="_blank"
+                    >github.com/rancher/dashboard/issues/11571</a
+                  >
+                </p>
+              </li>
+              <li>
+                <p>UI/UX issue</p>
+                <p>
+                  <a href="https://jira.suse.com/browse/UXUI-231" target="_blank"
+                    >jira.suse.com/browse/UXUI-231</a
+                  >
+                </p>
+              </li>
+            </ul>
+          </section>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Where to Find the Dashboards?
+        <section>
+          <section>
+            <h3>Dashboard Organization</h3>
+          </section>
+          <section
+            data-background-image="images/dashboard-org-single-cluster.svg"
+            data-background-size="contain"
+          ></section>
 
-					Currently, only in Grafana
-						<!-- - Grafana is reachable from the Rancher UI. Click on the `local` cluster -> `Monitoring` -> `Grafana` -->
+          <section
+            data-background-image="images/dashboard-org-two-clusters.svg"
+            data-background-size="contain"
+          ></section>
 
-					![where-to-find](images/where-to-find.png)
-					</textarea>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
-					### Where to Find the Dashboards?
+          <section
+            data-background-image="images/dashboard-org-two-paths-with-clustergroup.svg"
+            data-background-size="contain"
+          ></section>
 
-					#### Embedding into Rancher UI in progress
+          <section
+            data-background-image="images/dashboard-org-from-cluster.svg"
+            data-background-size="contain"
+          ></section>
 
-					- Fleet proposal
+          <section
+            data-background-image="images/dashboard-org-from-cluster-with-paths.svg"
+            data-background-size="contain"
+          ></section>
 
-						<https://github.com/rancher/fleet/issues/2634>
+          <section
+            data-background-image="images/dashboard-org-from-clustergroup-with-paths.svg"
+            data-background-size="contain"
+          ></section>
+        </section>
 
-					- Resulting Rancher Dashboard issue
+        <section>
+          <section>
+            <h3>Tour of Dashboards</h3>
 
-						<https://github.com/rancher/dashboard/issues/11571>
+            <ul>
+              <li>GitRep</li>
+              <li>Bundle</li>
+              <li>BundleDeployment*</li>
+              <li>Cluster</li>
+              <li>ClusterGroup</li>
+              <li>Controller-Runtime*</li>
+            </ul>
 
-					- UI/UX issue
+            <p>*Not to be embedded in Rancher UI</p>
+          </section>
 
-						<https://jira.suse.com/browse/UXUI-231>
+          <section>
+            <h3>GitRepo</h3>
+            <img src="images/dashboards/gitrepo.png" />
+          </section>
 
-				</textarea>
-			</section>
+          <section>
+            <h3>Cluster</h3>
+            <img src="images/dashboards/cluster.png" />
+          </section>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Dashboard Organization
+          <section>
+            <h3>ClusterGroup</h3>
+            <img src="images/dashboards/clustergroup.png" />
+          </section>
 
-				</textarea>
-			</section>
+          <section>
+            <h3>Bundle</h3>
+            <img src="images/dashboards/bundle.png" />
+          </section>
 
-			<section data-background-image="images/dashboard-org.svg">
+          <section>
+            <h3>BundleDeployment</h3>
+            <img src="images/dashboards/bundledeployment.png" />
+          </section>
 
+          <section>
+            <h3>Controller Runtime</h3>
+            <img src="images/dashboards/controller-runtime.png" />
+          </section>
+        </section>
 
-			</section>
+        <section>
+        <section>
+					<h3>Troubleshooting</h3>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-						### Tour of Dashboards
+        <section>
 
-						- GitJob
-						- Bundle
-						- BundleDeployment*
-						- Cluster
-						- ClusterGroup
-						- Controller-Runtime*
-
-						*Not to be embedded in Rancher UI
-					</textarea>
-			</section>
-
-			<section data-markdown>
-				<textarea data-template>
-					### Troubleshooting
+					<h3>Troubleshooting</h3>
 					#### Data Flow
 
 					<img src="images/data-flow.svg"
 							alt="Prometheus Architecture"
-							style="width: auto; height: 20%;">
+              height="50%"
+              width="50%">
 
-					---
+        </section>
 
+<section>
 					#### Dashboard X doesn't show data
 
 					![no-data-gitrepo](images/no-data-gitrepo.png)
 
-					---
+					</section><section>
 
-					### Troubleshooting
+
+					<h3>Troubleshooting</h3>
 
 					#### Dashboard X doesn't show data
 
@@ -140,9 +209,9 @@
 					- Metrics will only appear if the corresponding
 					resource is created, e.g. GitJob
 
-					---
+					</section><section>
 
-					### Troubleshooting
+					<h3>Troubleshooting</h3>
 
 					#### Dashboard X doesn't show data
 
@@ -152,9 +221,9 @@
 
 					  ![time-range](images/time-range.png)
 
-					---
+					</section><section>
 
-					### Troubleshooting
+					<h3>Troubleshooting</h3>
 
 					#### Dashboard X doesn't show data
 
@@ -164,12 +233,11 @@
 
 					  ![time-range](images/refresh-interval.png)
 
-					</textarea>
-			</section>
+        </section>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Troubleshooting
+        <section>
+					<h3>Troubleshooting</h3>
 					#### I don't see *any* data
 
 					***
@@ -185,58 +253,68 @@
 					- Check the Fleet service
 					- Check the Fleet controller
 
-					</textarea>
-			</section>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Troubleshooting
+        <section>
+					<h3>Troubleshooting</h3>
 					#### Wrong Data
 
 					***
 
 					- Not a dashboard issue if Fleet resources show the same
 					values in their status
-					</textarea>
-			</section>
+        </section>
 
-			<section data-markdown>
-				<textarea data-template>
-					### Troubleshooting
+        <section>
+					<h3>Troubleshooting</h3>
 					#### Missing Data
 
 					***
 
 					- Monitoring collects data every X seconds
-					</textarea>
-			</section>
+        </section>
 
-		</div>
-	</div>
+        <section>
+          <h3>Outlook</h3>
+          <ul>
+            <li>More dashboards</li>
+            <li>Embedding into Rancher UI</li>
+            <li>Alerts</li>
+          </ul>
+        </section>
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
+        <section>
+          <h3>Questions?</h3>
+        </section>
 
-	<!-- https://github.com/zjffun/reveal.js-mermaid-plugin -->
-	<script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@2.3.0/plugin/mermaid/mermaid.js"></script>
+        <section>
+          <h3>Thank you!</h3>
+        </section>
+      </div>
+    </div>
 
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-		Reveal.initialize({
-			hash: true,
-			progress: true,
-			mermaid: {
-				theme: 'base',
-			},
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
 
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
-		});
-	</script>
-</body>
+    <!-- https://github.com/zjffun/reveal.js-mermaid-plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@2.3.0/plugin/mermaid/mermaid.js"></script>
 
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        progress: true,
+        mermaid: {
+          theme: "base",
+        },
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
+      });
+    </script>
+  </body>
 </html>
