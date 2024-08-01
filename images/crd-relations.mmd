@@ -11,9 +11,9 @@ erDiagram
     %% Bundle
     %% BundleDeployment
 
-    GitRepo ||--o{ Cluster : "uses"
-    GitRepo ||--o{ ClusterGroup : "uses"
+    GitRepo }o--o{ Cluster : "uses"
+    GitRepo }o--o{ ClusterGroup : "uses"
     GitRepo ||--o{ Bundle : "creates"
-    ClusterGroup ||--o{ Cluster : "contains"
+    ClusterGroup }o--o{ Cluster : "uses"
     Bundle ||--o{ BundleDeployment : "results in"
     BundleDeployment ||--o{ Resource : "creates"

@@ -1,0 +1,22 @@
+
+%%{
+    init: {
+        "theme": "base"
+    }
+}%%
+
+flowchart LR
+    GR1(GitRepo Resource)
+    GR2(GitRepo Resource)
+    GR3(GitRepo Resource)
+    C(Cluster)
+
+    C --> GR1
+    C --> GR2
+    C --> GR3
+
+    GR1 --> BD1(Bundle 1)
+    GR1 --> BD2(Bundle 2)
+    GR2 --> BD3(Bundle 3)
+    GR3--> BD4(Bundle 4)
+    GR3--> BD5(Bundle 5)

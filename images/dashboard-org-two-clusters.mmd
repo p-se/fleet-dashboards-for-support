@@ -1,0 +1,26 @@
+
+%%{
+    init: {
+        "theme": "base"
+    }
+}%%
+
+flowchart LR
+    GR("`GitRepo Resource
+    with *one* path and *two*
+    clusters`")
+    C1(Cluster 1)
+    C2(Cluster 2)
+
+    RGR(Git Repository)
+
+    GR -->|refers to one| RGR
+
+    GR --> B(Bundle 1)
+
+    B --> BD1(BundleDeployment 1)
+    B --> BD2(BundleDeployment 2)
+
+    RGR --> |fleet.yaml| C1
+    RGR --> |fleet.yaml| C2
+
