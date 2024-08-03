@@ -1,16 +1,4 @@
-%%{
-    init: {
-        "theme": "base"
-    }
-}%%
-
 erDiagram
-    %% GitRepo
-    %% Cluster
-    %% ClusterGroup
-    %% Bundle
-    %% BundleDeployment
-
     GitRepo }o--o{ Cluster : "uses"
     GitRepo }o--o{ ClusterGroup : "uses"
     GitRepo ||--o{ Bundle : "creates"
