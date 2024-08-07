@@ -257,12 +257,18 @@
         </section>
 
         <section>
-          <video data-autoplay
-                 controls
+          <video controls
                  src="videos/check-grafana-data-source.webm"
                  height="400"></video>
         </section>
 
+        <section>
+          <h3>Troubleshooting</h3>
+          <h4>I don't see <em>any</em> data</h4>
+          <hr />
+          <p>Check the scrape configuration in Prometheus</p>
+
+        </section>
         <section>
           <h3>Troubleshooting</h3>
           <h4>I don't see <em>any</em> data</h4>
@@ -488,7 +494,7 @@ gitjob-7dd55dfd8c-jrgt7             1/1     Running   1 (29h ago)   7d1h
           </p>
           <ul>
             <li>No monitoring-.* services</li>
-            <li>No exposed port in Fleet & Gitjob controller</li>
+            <li>No exporters listening in Fleet & Gitjob controller</li>
           </ul>
         </section>
 
@@ -532,7 +538,7 @@ gitjob-7dd55dfd8c-jrgt7             1/1     Running   1 (29h ago)   7d1h
         <h3>Thank you!</h3>
         <p>You can find this presentation on</p>
         <p>
-          <a href="https://github.com/p-se/fleet-metrics-for-support">github.com/p-se/fleet-metrics-for-support</a>
+          <a href="https://github.com/p-se/fleet-dashboards-for-support">github.com/p-se/fleet-dashboards-for-support</a>
         </p>
       </section>
     </div>
